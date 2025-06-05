@@ -23,7 +23,7 @@ export async function POST(req) {
         image: data.image_url
     };
 
-    await connectDB(){
+    await connectDB();
         switch (type) {
             case "user.created":
                 await User.create(userData)
@@ -38,6 +38,6 @@ export async function POST(req) {
                 break;
         }
         return NextRequest.json({message:"Event Received"})
-    }
+    
 
 }
