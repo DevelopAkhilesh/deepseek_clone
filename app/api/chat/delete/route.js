@@ -1,6 +1,6 @@
 import connectDB from "@/config/db";
 import Chat from "@/models/Chat";
-import { getAuth } from "@clerk/nextjs/dist/types/server";
+import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -18,7 +18,7 @@ export async function POST(req) {
 
         await connectDB();
         await Chat.deleteOne({_id:chatId,userId})
-        return NextResponse.json({sucess:true,message:'Chat is Deleted'});
+        return NextResponse.json({success:true,message:'Chat is Deleted'});
     } catch (error) {return NextResponse.json({success:false,error:error.message});
         
     }
