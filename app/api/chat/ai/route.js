@@ -8,7 +8,7 @@ import  Chat  from "@/models/Chat";
 
 const openai = new OpenAI({
         baseURL: 'https://api.deepseek.com',
-        apiKey: process.env.DEEPSEEK_API_KEY
+        apiKey: process.env.OPENAI_API_KEY
 });
 
 export async function POST(req){
