@@ -13,7 +13,7 @@ export const useAppContext = ()=>{
 }
 
 export const AppContextProvider = ({children})=>{
-    const{user}= useUser()
+    const{user,isLoaded}= useUser()
     const {getToken} = useAuth()
 
     const [chats,setChats]=useState([]);
@@ -37,10 +37,10 @@ export const AppContextProvider = ({children})=>{
     const fetchUserChats = async ()=>{
         try {
             const token = await getToken();
-            const {data}= await axios.get("/api/chat/create",{},{headers:{
+            const {data}= await axios.get("/api/chat/create",{headers:{
                 Authorization:`Bearer ${token}`
             }})
-            if(data.sucess){
+            if(data.success){
                 console.log(data.data);
                 setChats(data.data)
 
@@ -64,10 +64,10 @@ export const AppContextProvider = ({children})=>{
     }
 
     useEffect(()=>{
-        if(user){
+        if(user && isLoaded){
             fetchUserChats();
         }
-    },[user])
+    },[user,isLoaded])
     const value = {
         user,
         chats,
