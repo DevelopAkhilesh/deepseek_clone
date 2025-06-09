@@ -16,7 +16,7 @@ export const AppContextProvider = ({children})=>{
     const{user}= useUser()
     const {getToken} = useAuth()
 
-    const [chats,setChats]=useState('');
+    const [chats,setChats]=useState([]);
     const [selectedChat, setSelectedChat]=useState(null);
 
     const createNewChat = async ()=>{
@@ -52,7 +52,7 @@ export const AppContextProvider = ({children})=>{
                 data.data.sort((a,b)=>new Date(b.updatedAt) - new Date(a.updatedAt));
             // set recently updated chat as selected chat
 
-            setSelectedChats(data.data[0]);
+            setSelectedChat(data.data[0]);
             console.log(data.data[0]);
             }   
             }else{
