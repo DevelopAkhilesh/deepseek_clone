@@ -27,7 +27,7 @@ const PromptBox = ({setIsLoading,isLoading}) => {
         setPrompt('')
 
         const userPrompt ={
-          role:"User",
+          role:"user",
           content:prompt,
           timestamp: Date.now(),
         }
