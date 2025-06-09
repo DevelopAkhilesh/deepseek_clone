@@ -24,7 +24,7 @@ export const AppContextProvider = ({children})=>{
             if(!user)return null;
 
             const token = await getToken();
-            await axios.post('api/chat/create',{},{headers:{Authorization:`Bearer${token}`}})
+            await axios.post('api/chat/create',{},{headers:{Authorization:`Bearer ${token}`}})
             fetchUserChats();
        
         } catch (error) {
