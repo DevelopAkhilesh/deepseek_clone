@@ -13,7 +13,7 @@ export const useAppContext = ()=>{
 }
 
 export const AppContextProvider = ({children})=>{
-    const{user,isLoaded}= useUser()
+    const{user}= useUser()
     const {getToken} = useAuth()
 
     const [chats,setChats]=useState([]);
@@ -64,10 +64,10 @@ export const AppContextProvider = ({children})=>{
     }
 
     useEffect(()=>{
-        if(user && isLoaded){
+        if(user){
             fetchUserChats();
         }
-    },[user,isLoaded])
+    },[user])
     const value = {
         user,
         chats,

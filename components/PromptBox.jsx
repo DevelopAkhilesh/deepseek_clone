@@ -21,7 +21,7 @@ const PromptBox = ({setIsLoading,isLoading}) => {
 
       try{
         e.preventDefault();
-        if(!user || !user._id) return toast.error('login to send message');
+        if(!user) return toast.error('login to send message');
         if(isLoading) return toast.error('Wait for the previous prompt response');
         setIsLoading(true)
         setPrompt('')
